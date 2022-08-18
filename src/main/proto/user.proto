@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+import "order.proto";
+
+package io.codewithwinnie.shopping.stubs.user;
+option java_package = "io.codewithwinnie.shopping.stubs.user";
+option java_multiple_files = true;
+
+
+service UserService {
+  rpc getUserDetails(UserRequest) returns (UserResponse) {}
+}
+
+message UserRequest {
+  string username = 1;
+}
+
+message UserResponse {
+  int32 id = 1;
+  string username = 2;
+  string name = 3;
+  int32 age = 4;
+  Gender gender = 5;
+  int32 no_of_orders = 6;
+  repeated io.codewithwinnie.shopping.stubs.order.Order orders = 7;
+}
+
+enum Gender {
+  MALE = 0;
+  FEMALE = 1;
+  OTHERS = 3;
+}
